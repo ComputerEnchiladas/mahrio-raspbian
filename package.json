@@ -1,0 +1,25 @@
+{
+  "name": "mahrio-raspbian",
+  "version": "1.0.0",
+  "authors": [
+    "Jesus Guerrero"
+  ],
+  "description": "Powered by MAHR.IO",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "respository": {
+    "type": "git",
+    "url": "git@github.com:ComputerEnchiladas/mahrio-raspbian.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "boom": "2.10.1",
+    "hapi": "8.8.1",
+    "good": "6.3.0",
+    "good-console": "5.3.1",
+    "node-env-file": "0.1.8",
+    "ejs": "2.4.2"
+  }
+}
