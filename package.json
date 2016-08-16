@@ -16,10 +16,13 @@
   "license": "MIT",
   "dependencies": {
     "boom": "2.10.1",
-    "hapi": "8.8.1",
+    "ejs": "2.4.2",
     "good": "6.3.0",
     "good-console": "5.3.1",
+    "hapi": "8.8.1",
+    "johnny-five": "^0.10.0",
     "node-env-file": "0.1.8",
-    "ejs": "2.4.2"
+    "omxdirector": "^0.1.2",
+    "socket.io": "^1.4.8"
   }
 }
