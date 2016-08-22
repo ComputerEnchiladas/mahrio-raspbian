@@ -15,6 +15,7 @@ var config = require('./config/env')( process.env )
 var dirAPI = require('./config/media/directories')
   , omx = require('./config/omxdirector/index');
 
+require('./config/lirc/index')( omx );
 require('./config/sockets')( server, {dir: dirAPI, omx: omx});
 
 require('./routes/index')( server );
