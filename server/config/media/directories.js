@@ -13,7 +13,7 @@ module.exports = {
     return readDirectory('ls -p '+dir+' | grep -v /');
   },
   getAllFiles: function( dir ){
-    return readDirectory('find '+dir+' -type f -name "*.mp4"');
+    return readDirectory('find '+dir+' -type f -regex ".*[mp4|mkv]"');
   },
   gotoDirectory: function( dir ) { }
 };

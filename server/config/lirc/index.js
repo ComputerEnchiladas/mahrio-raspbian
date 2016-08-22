@@ -2,7 +2,7 @@
 
 var REMOTE = '/home/pi/lircd.conf';
 
-lirc_node = require('lirc_node');
+var lirc_node = require('lirc_node');
 lirc_node.init();
 
 // lirc_node.addListener(function(data) {

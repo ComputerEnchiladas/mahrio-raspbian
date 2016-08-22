@@ -3,7 +3,7 @@
 var io = null;
 
 function escapeSpaces( path ) {
-  if( path ) { return path.replace(' ', '\\ '); }
+  if( path ) { return path.replace(/ /g, '\\ '); }
   else { return ''; }
 }
 
@@ -27,9 +27,10 @@ function main( server, hardware ) {
     });
     socket.on( 'get:media:files', function( path ){
       path = escapeSpaces( path );
-
+      console.log('GET MEDIA FILES:', path);
       hardware.dir.getFiles( process.env.MEDIA_DIRECTORY + path)
           .then( function(files){
+	    console.log('HW Promise:', files );
             socket.emit( 'media:files:list', files);
           });
     });
@@ -44,7 +45,7 @@ function main( server, hardware ) {
           .then( function(files){
             files = files.split('\n').filter( function(item){ return item !== ""; });
             console.log( files );
-            //hardware.omx.play( files );
+            hardware.omx.play( files );
           });
     });
   });
