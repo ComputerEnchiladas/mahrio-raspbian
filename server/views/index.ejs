@@ -1,12 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Hello</title>
-    <link href="/assets/css/index.css" type="text/css" rel="stylesheet"/>
-</head>
-<body style="background: #000; color: #fff;>
-<h2>MAHRIO</h2>
-<script src="/assets/js/index.js"></script>
-</body>
+<html ng-app="mahrio">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <title>Hello</title>
+        <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+        <link href="/assets/css/index.css" type="text/css" rel="stylesheet"/>
+    </head>
+    <body>
+    <h1 class="text-center"><a href="/">MAHR.IO</a></h1>
+    <div class="container-fluid">
+        <div ng-view></div>
+    </div>
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="/bower_components/socket.io-client/socket.io.js"></script>
+    <script src="/assets/js/index.js"></script>
+    </body>
 </html>

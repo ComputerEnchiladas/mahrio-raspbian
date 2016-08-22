@@ -4,10 +4,30 @@
 module.exports = function( server ) {
     server.route({
         method: 'GET',
+        path: '/bower_components/{param*}',
+        handler: {
+            directory: {
+                path: ['../public/bower_components'],
+                defaultExtension: 'html'
+            }
+        }
+    });
+    server.route({
+        method: 'GET',
         path: '/assets/{param*}',
         handler: {
             directory: {
-                path: ['../public/bower_components/','../public'],
+                path: ['../public'],
+                defaultExtension: 'html'
+            }
+        }
+    });
+    server.route({
+        method: 'GET',
+        path: '/partials/{param*}',
+        handler: {
+            directory: {
+                path: ['../public/html/'],
                 defaultExtension: 'html'
             }
         }

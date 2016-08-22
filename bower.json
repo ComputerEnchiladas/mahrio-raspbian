@@ -13,15 +13,11 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "1.5.5"
+    "angular": "1.5.8",
+    "bootstrap": "3.3.7",
+    "socket.io-client": "1.4.8",
+    "angular-route": "1.5.8"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "license": "MIT"
 }
-
-
-
-
-Hello world this is live and going strong.
-

@@ -1,0 +1,14 @@
+<button class="btn btn-default" style="position:absolute; top:23px; margin-left: 15px;" ng-click="vm.back()">
+    Back
+</button>
+<button class="btn btn-default" style="position:absolute; top:23px; margin-left: 15px;right:30px" ng-click="vm.playAll()">
+    Play All
+</button>
+<ul class="text-center nav nav-pills">
+    <li class="col-sm-3 no-margin" ng-class="{true: 'active'}[!$index]" ng-repeat="item in vm.mediaDir track by $index">
+        <a class="light-border" ng-click="vm.searchFolder(item)">{{item}}</a>
+    </li>
+    <li class="col-sm-3 no-margin" ng-class="{true: 'active'}[!vm.mediaDir.length && !$index]" ng-repeat="item in vm.mediaFiles track by $index">
+        <a class="light-border">{{item}}</a>
+    </li>
+</ul>

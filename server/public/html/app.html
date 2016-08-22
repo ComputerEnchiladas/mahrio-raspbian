@@ -1,0 +1,5 @@
+<ul class="text-center nav nav-pills">
+    <li class="col-sm-4 no-margin" ng-class="{true: 'active'}[!$index]" ng-repeat="item in vm.menuItems track by $index">
+        <a class="light-border" ng-href="#{{item.link}}">{{::item.name}}</a>
+    </li>
+</ul>
