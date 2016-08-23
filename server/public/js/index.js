@@ -44,13 +44,15 @@ angular.module('mahrio', ['ngRoute'])
       });
       _socket.on('remote:input:enter', function(){
         $rootScope.$broadcast('remote:input:enter');
-        console.log('ENTER');
+        alert('ENTER');
       });
-      _socket.on('remote:in:menu', function(){
-        $rootScope.$broadcast('remote:key:menu');
+      _socket.on('remote:input:menu', function(){
+        $rootScope.$broadcast('remote:input:menu');
+ 	console.log('MENU');
       });
-      _socket.on('remote:in:playpause', function(){
-        $rootScope.$broadcast('remote:key:playpause');
+      _socket.on('remote:input:playpause', function(){
+        $rootScope.$broadcast('remote:input:playpause');
+	console.log('PLAYPAUSE')
       });
       _socket.on('media:dir:list', function( list ){
         $rootScope.$broadcast('media:dir:list', list);
