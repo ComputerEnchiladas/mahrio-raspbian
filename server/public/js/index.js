@@ -26,24 +26,24 @@ angular.module('mahrio', ['ngRoute'])
       _socket.on( 'disconnect', function(){
         console.log('disconnected');
       });
-      _socket.on('remote:in:up', function(){
-        $rootScope.$broadcast('remote:key:up');
+      _socket.on('remote:input:up', function(){
+        $rootScope.$broadcast('remote:input:up');
         console.log('UP');
       });
-      _socket.on('remote:in:down', function(){
-        $rootScope.$broadcast('remote:key:down');
+      _socket.on('remote:input:down', function(){
+        $rootScope.$broadcast('remote:input:down');
         console.log('DOWN');
       });
-      _socket.on('remote:in:left', function(){
-        $rootScope.$broadcast('remote:key:left');
+      _socket.on('remote:input:left', function(){
+        $rootScope.$broadcast('remote:input:left');
         console.log('LEFT');
       });
-      _socket.on('remote:in:right', function(){
-        $rootScope.$broadcast('remote:key:right');
+      _socket.on('remote:input:right', function(){
+        $rootScope.$broadcast('remote:input:right');
         console.log('RIGHT');
       });
-      _socket.on('remote:in:enter', function(){
-        $rootScope.$broadcast('remote:key:enter');
+      _socket.on('remote:input:enter', function(){
+        $rootScope.$broadcast('remote:input:enter');
         console.log('ENTER');
       });
       _socket.on('remote:in:menu', function(){

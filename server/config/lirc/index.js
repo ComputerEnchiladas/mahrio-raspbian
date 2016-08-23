@@ -5,22 +5,12 @@ var REMOTE = '/home/pi/lircd.conf';
 var lirc_node = require('lirc_node');
 lirc_node.init();
 
-// lirc_node.addListener(function(data) {
-//     console.log("Received IR keypress '" + data.key + "' from remote '" + data.remote +"'");
-// });
-//
-// lirc_node.addListener('KEY_MENU', REMOTE, function(data) {
-//     console.log("Received IR keypress 'KEY_UP' from fixed LISTENER");
-//     // data also has `code` and `repeat` properties from the output of `irw`
-//     // The final argument after this callback is a throttle allowing you to
-//     // specify to only execute this callback once every x milliseconds.
-// }, 400);
-
 module.exports = function( omx, socket ){
     lirc_node.addListener('KEY_MENU', REMOTE, function() {
         if( omx.isLoaded() ) {
             omx.stop();
         }
+        socket.emit('remote:input:menu');
     }, 400);
     lirc_node.addListener('KEY_PLAYPAUSE', REMOTE, function() {
         if( omx.isLoaded() ) {
@@ -30,6 +20,7 @@ module.exports = function( omx, socket ){
                 omx.play();
             }
         }
+        socket.emit('remote:input:playpause');
     }, 400);
     lirc_node.addListener('KEY_UP', REMOTE, function(){
         socket.emit('remote:input:up');
