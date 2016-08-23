@@ -7,17 +7,22 @@ if ( process.env.NODE_ENV === 'development' ) {
     console.log('Running Development!');
 }
 
-var config = require('./config/env')( process.env )
-  , server= require('./config/hapi')( config );
+const CONFIG = require('./config/env')( process.env )
+    , SERVER = require('./config/hapi')( CONFIG )
+    , events = require('events');
+
+var remote = new events.EventEmitter();
 
 //require('./config/onoff/motion_in_21');
 
 var dirAPI = require('./config/media/directories')
   , omx = require('./config/omxdirector/index');
 
-require('./config/lirc/index')( omx );
-require('./config/sockets')( server, {dir: dirAPI, omx: omx});
+var io = require('./config/sockets')( SERVER, {dir: dirAPI, omx: omx});
 
-require('./routes/index')( server );
+require('./config/lirc/index')( omx, remote );
+require('./config/lirc/broadcast')( io, remote);
 
-module.exports = server;
+require('./routes/index')( SERVER );
+
+module.exports = SERVER;

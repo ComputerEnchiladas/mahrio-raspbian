@@ -16,13 +16,13 @@ lirc_node.init();
 //     // specify to only execute this callback once every x milliseconds.
 // }, 400);
 
-module.exports = function( omx ){
-    lirc_node.addListener('KEY_MENU', REMOTE, function(data) {
+module.exports = function( omx, socket ){
+    lirc_node.addListener('KEY_MENU', REMOTE, function() {
         if( omx.isLoaded() ) {
             omx.stop();
         }
     }, 400);
-    lirc_node.addListener('KEY_PLAYPAUSE', REMOTE, function(data) {
+    lirc_node.addListener('KEY_PLAYPAUSE', REMOTE, function() {
         if( omx.isLoaded() ) {
             if( omx.isPlaying() ) {
                 omx.pause();
@@ -30,5 +30,20 @@ module.exports = function( omx ){
                 omx.play();
             }
         }
+    }, 400);
+    lirc_node.addListener('KEY_UP', REMOTE, function(){
+        socket.emit('remote:input:up');
+    }, 400);
+    lirc_node.addListener('KEY_DOWN', REMOTE, function(){
+        socket.emit('remote:input:down');
+    }, 400);
+    lirc_node.addListener('KEY_LEFT', REMOTE, function(){
+        socket.emit('remote:input:left');
+    }, 400);
+    lirc_node.addListener('KEY_RIGHT', REMOTE, function(){
+        socket.emit('remote:input:right');
+    }, 400);
+    lirc_node.addListener('KEY_ENTER', REMOTE, function(){
+        socket.emit('remote:input:enter');
     }, 400);
 };

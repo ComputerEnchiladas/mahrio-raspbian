@@ -7,7 +7,7 @@ function escapeSpaces( path ) {
   else { return ''; }
 }
 
-function main( server, hardware ) {
+function main( server, hardware, remote ) {
   io = require('socket.io').listen( server.listener );
 
   io.on('connection', function( socket ){
@@ -49,5 +49,7 @@ function main( server, hardware ) {
           });
     });
   });
+
+  return io;
 }
 module.exports = main;
