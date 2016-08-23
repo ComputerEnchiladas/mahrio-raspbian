@@ -28,18 +28,23 @@ angular.module('mahrio', ['ngRoute'])
       });
       _socket.on('remote:in:up', function(){
         $rootScope.$broadcast('remote:key:up');
+        console.log('UP');
       });
       _socket.on('remote:in:down', function(){
         $rootScope.$broadcast('remote:key:down');
+        console.log('DOWN');
       });
       _socket.on('remote:in:left', function(){
         $rootScope.$broadcast('remote:key:left');
+        console.log('LEFT');
       });
       _socket.on('remote:in:right', function(){
         $rootScope.$broadcast('remote:key:right');
+        console.log('RIGHT');
       });
       _socket.on('remote:in:enter', function(){
         $rootScope.$broadcast('remote:key:enter');
+        console.log('ENTER');
       });
       _socket.on('remote:in:menu', function(){
         $rootScope.$broadcast('remote:key:menu');
