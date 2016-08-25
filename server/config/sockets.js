@@ -4,7 +4,7 @@ var io = null
   , PromiseSettle = require('promise-settle');
 
 function escapeSpaces( path ) {
-  if( path ) { return path.replace(/ /g, '\\ '); }
+  if( path ) { return path.replace(/ /g, '\\ ').replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&"); }
   else { return ''; }
 }
 
