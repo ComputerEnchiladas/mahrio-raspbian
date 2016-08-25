@@ -64,7 +64,7 @@ function main( server, hardware, remote ) {
         hardware.omx.stop();
       }
       console.log('Now Playing: ', file);
-      hardware.omx.play( file.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&") );
+      hardware.omx.play( file );
     });
   });
 
