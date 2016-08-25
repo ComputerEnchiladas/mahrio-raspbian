@@ -63,6 +63,7 @@ function main( server, hardware, remote ) {
       if( hardware.omx.isLoaded() ) {
         hardware.omx.stop();
       }
+      console.log('Now Playing: ', file);
       hardware.omx.play( file );
     });
   });
