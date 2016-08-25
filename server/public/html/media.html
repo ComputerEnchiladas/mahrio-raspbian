@@ -5,10 +5,7 @@
     Play All
 </button>
 <ul class="text-center nav nav-pills">
-    <li class="col-sm-3 no-margin" ng-class="{true: 'active'}[!$index]" ng-repeat="item in vm.mediaDir track by $index">
-        <a class="light-border" ng-click="vm.searchFolder(item)">{{item}}</a>
-    </li>
-    <li class="col-sm-3 no-margin" ng-class="{true: 'active'}[!vm.mediaDir.length && !$index]" ng-repeat="item in vm.mediaFiles track by $index">
-        <a class="light-border">{{item}}</a>
+    <li class="col-sm-3 no-margin" ng-class="{true: 'active'}[item.selected]" ng-repeat="item in vm.media track by $index">
+        <a class="light-border" ng-click="vm.searchFolder(item)">{{::item.name}}</a>
     </li>
 </ul>

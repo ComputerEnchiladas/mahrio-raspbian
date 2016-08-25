@@ -1,128 +1,180 @@
-var socket = io();
+(function(){
+  'use strict';
 
-angular.module('mahrio', ['ngRoute'])
-  .config(['$routeProvider',
-    function($routeProvider) {
-      $routeProvider.when('/app', {
-        templateUrl: '/partials/app.html',
-        controller: 'AppCtrl as vm'
-      }).when('/app/media', {
-        templateUrl: '/partials/media.html',
-        controller: 'MediaCtrl as vm'
-      }).otherwise({
-        redirectTo: '/app'
-      });
-    }
-  ])
-  .value( '_socket', socket )
-  .run( ['$rootScope', 'SocketEvents', function( $rootScope, SocketEvents ) {
-    SocketEvents.provision( $rootScope );
-  }])
-  .service('SocketEvents', [ '_socket', function( _socket) {
-    this.provision = function( $rootScope ) {
-      _socket.on( 'connect', function(){
-        console.log('we are socket.on -> connected');
-      });
-      _socket.on( 'disconnect', function(){
-        console.log('disconnected');
-      });
-      _socket.on('remote:input:up', function(){
-        $rootScope.$broadcast('remote:input:up');
-        console.log('UP');
-      });
-      _socket.on('remote:input:down', function(){
-        $rootScope.$broadcast('remote:input:down');
-        console.log('DOWN');
-      });
-      _socket.on('remote:input:left', function(){
-        $rootScope.$broadcast('remote:input:left');
-        console.log('LEFT');
-      });
-      _socket.on('remote:input:right', function(){
-        $rootScope.$broadcast('remote:input:right');
-        console.log('RIGHT');
-      });
-      _socket.on('remote:input:enter', function(){
-        $rootScope.$broadcast('remote:input:enter');
-        alert('ENTER');
-      });
-      _socket.on('remote:input:menu', function(){
-        $rootScope.$broadcast('remote:input:menu');
- 	console.log('MENU');
-      });
-      _socket.on('remote:input:playpause', function(){
-        $rootScope.$broadcast('remote:input:playpause');
-	console.log('PLAYPAUSE')
-      });
-      _socket.on('media:dir:list', function( list ){
-        $rootScope.$broadcast('media:dir:list', list);
-      });
-      _socket.on('media:files:list', function( list ){
-        $rootScope.$broadcast('media:files:list', list);
-      });
-    };
-    this.getDirectories = function( dir ){
-      _socket.emit('get:media:dir', dir);
-    };
-    this.getFiles = function( dir ){
-      _socket.emit('get:media:files', dir);
-    };
-    this.playAll = function( dir ) {
-      _socket.emit('play:all:dir', dir);
-    };
-  }])
-  .controller('AppCtrl', [ function( ){
-    var that = this;
+  angular.module('mahrio', ['ngRoute'])
+    .config(['$routeProvider',
+      function($routeProvider) {
+        $routeProvider.when('/app', {
+          templateUrl: '/partials/app.html',
+          controller: 'AppCtrl as vm'
+        }).when('/app/media', {
+          templateUrl: '/partials/media.html',
+          controller: 'MediaCtrl as vm'
+        }).otherwise({
+          redirectTo: '/app'
+        });
+      }
+    ])
+    .value( '_socket', io() )
+    .factory('Media', [ function(){
+      var allMedia = [], selected = [0,0], rows = 0, columns = 4;
 
-    that.menuItems = [{
-      name: 'Media',
-      active: true,
-      link: '/app/media'
-    },{
-      name: 'Motion',
-      active: false
-    },{
-      name: 'Other',
-      active: false
-    }];
+      return {
+        socketUpdate: false,
+        remoteInput: function( direction ) {
+          allMedia[ ((selected[0] - 1) * 4) + (selected[1] - 1) ].selected = false;
+          switch( direction ) {
+            case 'up':
+              break;
+            case 'down':
+              break;
+            case 'left':
+              if( selected[1] > 1) { selected[1]--; }
+              break;
+            case 'right':
+              if( selected[1] < 4) { selected[1]++; }
+              break;
+          }
+          allMedia[ ((selected[0] - 1) * 4) + (selected[1] - 1) ].selected = true;
+          this.socketUpdate = true;
+        },
+        getAllMedia: function(){
+          return allMedia;
+        },
+        setFromSocket: function(list){
+          var directories = list.directories.split('\n').filter( function(item){ return item !== ""; })
+            , files = list.files.split('\n').filter( function(item){ return item !== ""; });
 
-    that.processKey = function( $event){
-      console.log('KEY PRESSED', $event);
-    };
-  }])
-  .controller('MediaCtrl', [ '$scope', 'SocketEvents', '$document', function( $scope, SocketEvents, $document ) {
-    var that = this, path = [];
+          allMedia = directories.concat(files).map( function(media, i){
+            return {
+              selected: !i ? true : false,
+              row: (i / 4) + 1,
+              column: (i % 4) + 1,
+              type: (i < directories.length ? 'directory' : 'file'),
+              name: media
+            }
+          });
 
-    SocketEvents.getDirectories();
-    SocketEvents.getFiles();
-    $scope.$on('media:dir:list', function(event, list){
-      $scope.$apply( function(){
-        that.mediaDir = list.split('\n').filter( function(item){ return item !== ""; });
+          selected = [1,1];
+          rows = (allMedia.length / 4) + (allMedia.length % 4 !== 0 ? 1 : 0);
+          this.socketUpdate = true;
+        }
+      };
+    }])
+    .run( ['Media', 'SocketEvents', function( Media, SocketEvents ) {
+      SocketEvents.provision( );
+      SocketEvents.provisionRemote( Media );
+      SocketEvents.provisionMedium( Media );
+    }])
+    .service('SocketEvents', [ '$rootScope', '_socket', '$document', function( $rootScope, _socket, $document) {
+      this.provision = function( ) {
+        _socket.on('connect', function () {
+          console.log('we are socket.on -> connected');
+        });
+        _socket.on('disconnect', function () {
+          console.log('disconnected');
+        });
+      };
+      this.provisionRemote = function(  media ) {
+        _socket.on('remote:input:up', function () {
+          //$rootScope.$broadcast('remote:input:up');
+          console.log('UP');
+        });
+        _socket.on('remote:input:down', function () {
+          //$rootScope.$broadcast('remote:input:down');
+          console.log('DOWN');
+        });
+        _socket.on('remote:input:left', function () {
+          media.remoteInput( 'left' );
+          console.log('LEFT');
+          $rootScope.$digest();
+        });
+        _socket.on('remote:input:right', function () {
+          media.remoteInput( 'right' );
+          console.log('RIGHT');
+          $rootScope.$digest();
+        });
+        _socket.on('remote:input:enter', function () {
+          document.querySelector('li.active > a').click();
+          console.log('ENTER');
+        });
+        _socket.on('remote:input:menu', function () {
+          //$rootScope.$broadcast('remote:input:menu');
+        });
+        _socket.on('remote:input:playpause', function () {
+          //$rootScope.$broadcast('remote:input:playpause');
+        });
+      };
+      this.provisionMedium = function( media ) {
+        _socket.on('media:all:list', function( list ){
+          media.setFromSocket( list );
+          $rootScope.$digest();
+        });
+      };
+      this.getDirectories = function( dir ){
+        _socket.emit('get:media:dir', dir);
+      };
+      this.getFiles = function( dir ){
+        _socket.emit('get:media:files', dir);
+      };
+      this.playAll = function( dir ) {
+        _socket.emit('play:all:dir', dir);
+      };
+      this.playOne = function( file ) {
+        _socket.emit('play:one:file', file);
+      };
+      this.getAllMedia = function( dir ){
+        _socket.emit('get:media:all', dir);
+      }
+    }])
+
+    .controller('AppCtrl', [ function( ){
+      var that = this;
+
+      that.menuItems = [{
+        name: 'Media',
+        active: true,
+        link: '/app/media'
+      },{
+        name: 'Motion',
+        active: false
+      },{
+        name: 'Other',
+        active: false
+      }];
+
+      that.processKey = function( $event){
+        console.log('KEY PRESSED', $event);
+      };
+    }])
+    .controller('MediaCtrl', [ '$scope', 'SocketEvents', 'Media', function( $scope, SocketEvents, Media ) {
+      var that = this, path = [];
+
+      SocketEvents.getAllMedia();
+      $scope.$watch( function(){ return Media.socketUpdate; }, function(newVal){
+        if( newVal ) {
+          that.media = Media.getAllMedia();
+          Media.socketUpdate = false;
+        }
       });
-    });
-    $scope.$on('media:files:list', function(event, list){
-      $scope.$apply( function(){
-        that.mediaFiles = list.split('\n').filter( function(item){ return item !== ""; });
-      });
-    });
-    that.searchFolder = function( folder ) {
-      that.mediaDir = [];
-      that.mediaFiles = [];
-      path.push( folder );
-      SocketEvents.getDirectories(  path.join('/') );
-      SocketEvents.getFiles( path.join('/') );
-    };
-    that.playAll = function(){
-      console.log( path );
-      SocketEvents.playAll( path.length ? path.join('/') : '' );
-      console.log('Play All');
-    };
-    that.back = function(){
-      path.pop();
-      that.mediaDir = [];
-      that.mediaFiles = [];
-      console.log('Back');
-      SocketEvents.getDirectories(  path.length ? path.join('/') : '' );
-      SocketEvents.getFiles( path.length ? path.join('/') : '' );
-    };
-  }]);
+      that.searchFolder = function( item ) {
+        if( item.type !== 'directory'){
+          SocketEvents.playOne( path.join('/') + item.name );
+          return;
+        }
+
+        that.media = [];
+        path.push( item.name );
+        SocketEvents.getAllMedia( path.join('/') );
+      };
+      that.playAll = function(){
+        SocketEvents.playAll( path.length ? path.join('/') : '' );
+      };
+      that.back = function(){
+        path.pop();
+        that.media = [];
+        SocketEvents.getAllMedia( path.join('/') );
+      };
+    }]);
+})();
+
