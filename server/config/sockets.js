@@ -4,7 +4,7 @@ var io = null
   , PromiseSettle = require('promise-settle');
 
 function escapeSpaces( path ) {
-  if( path ) { return path.replace(/ /g, '\\ ').replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&"); }
+  if( path ) { return path.replace(/ /g, '\\ '); }
   else { return ''; }
 }
 
@@ -64,7 +64,7 @@ function main( server, hardware, remote ) {
         hardware.omx.stop();
       }
       console.log('Now Playing: ', file);
-      hardware.omx.play( file );
+      hardware.omx.play( file.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&") );
     });
   });
 
