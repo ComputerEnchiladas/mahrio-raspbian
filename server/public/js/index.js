@@ -17,30 +17,45 @@
     ])
     .value( '_socket', io() )
     .factory('Media', [ function(){
-      var allMedia = [], selected = [0,0], rows = 0, columns = 4;
+      var allMedia = [], selected = [0,0], rows = 0, columns = 4, btnBack = null;
 
       return {
         socketUpdate: false,
         remoteInput: function( direction ) {
-          allMedia[ ((selected[0] - 1) * 4) + (selected[1] - 1) ].selected = false;
+	  if( selected[0] > 0 ) {
+            allMedia[ ((selected[0] - 1) * 4) + (selected[1] - 1) ].selected = false;
+	  }
           switch( direction ) {
             case 'up':
+	      if( selected[0] === 1 ) { window.scrollTo(0,0); btnBack = true; }
+              if( selected[0] > 0) { selected[0]--; }
               break;
             case 'down':
+              if( selected[0] < rows) { selected[0]++; }
               break;
             case 'left':
-              if( selected[1] > 1) { selected[1]--; }
+	      if( selected[0] === 0 ) { btnBack = !btnBack; }
+              else if( selected[1] > 1) { selected[1]--; }
               break;
             case 'right':
-              if( selected[1] < 4) { selected[1]++; }
+	      if( selected[0] === 0 ) { btnBack = !btnBack; }
+              else if( selected[1] < 4) { selected[1]++; }
               break;
           }
-          allMedia[ ((selected[0] - 1) * 4) + (selected[1] - 1) ].selected = true;
+	  if( selected[0] > 0 ) {
+            allMedia[ ((selected[0] - 1) * 4) + (selected[1] - 1) ].selected = true;
+	  }
           this.socketUpdate = true;
         },
         getAllMedia: function(){
           return allMedia;
         },
+	isMenu: function(){
+	  return selected[0] === 0;
+	},
+	getBackBtn: function(){
+	  return btnBack;
+	},
         setFromSocket: function(list){
           var directories = list.directories.split('\n').filter( function(item){ return item !== ""; })
             , files = list.files.split('\n').filter( function(item){ return item !== ""; });
@@ -77,12 +92,14 @@
       };
       this.provisionRemote = function(  media ) {
         _socket.on('remote:input:up', function () {
-          //$rootScope.$broadcast('remote:input:up');
+          media.remoteInput( 'up' );
           console.log('UP');
+          $rootScope.$digest();
         });
         _socket.on('remote:input:down', function () {
-          //$rootScope.$broadcast('remote:input:down');
+          media.remoteInput( 'down' );
           console.log('DOWN');
+          $rootScope.$digest();
         });
         _socket.on('remote:input:left', function () {
           media.remoteInput( 'left' );
@@ -95,7 +112,11 @@
           $rootScope.$digest();
         });
         _socket.on('remote:input:enter', function () {
-          document.querySelector('li.active > a').click();
+	  try {
+            document.querySelector('li.active > a').click();
+	  } catch(e) {
+	    document.querySelector('button.btn-primary').click();
+	  }
           console.log('ENTER');
         });
         _socket.on('remote:input:menu', function () {
@@ -155,6 +176,11 @@
         if( newVal ) {
           that.media = Media.getAllMedia();
           Media.socketUpdate = false;
+	  if( Media.isMenu() ) {
+	    that.backBtn = Media.getBackBtn();
+	  } else {
+	    that.backBtn = null;
+	  }
         }
       });
       that.searchFolder = function( item ) {
@@ -174,6 +200,22 @@
         path.pop();
         that.media = [];
         SocketEvents.getAllMedia( path.join('/') );
+      };
+    }])
+    .directive('updateOnActive', [ function( ) {
+      return {
+	scope: {
+	  active: '='
+	},
+	link: function( scope, elem ) {
+	  scope.$watch( function() {
+	    return scope.active;
+	  }, function(newVal, oldVal) {
+	    if( newVal ) {
+	      window.scrollTo( 0, elem[0].offsetTop - 10 );
+	    }	
+	  });
+	}
       };
     }]);
 })();

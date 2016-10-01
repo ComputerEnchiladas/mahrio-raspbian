@@ -1,11 +1,14 @@
-<button class="btn btn-default" style="position:absolute; top:23px; margin-left: 15px;" ng-click="vm.back()">
+<button class="btn btn-default" style="position:absolute; top:23px; margin-left: 15px;" 
+    ng-class="{true: 'btn-primary'}[vm.backBtn]" ng-click="vm.back()">
     Back
 </button>
-<button class="btn btn-default" style="position:absolute; top:23px; margin-left: 15px;right:30px" ng-click="vm.playAll()">
+<button class="btn btn-default" style="position:absolute; top:23px; margin-left: 15px;right:30px" 
+    ng-class="{true: 'btn-primary'}[vm.backBtn===false]" ng-click="vm.playAll()">
     Play All
 </button>
 <ul class="text-center nav nav-pills">
-    <li class="col-sm-3 no-margin" ng-class="{true: 'active'}[item.selected]" ng-repeat="item in vm.media track by $index">
+    <li class="col-xs-3 no-margin" ng-class="{true: 'active'}[item.selected]" ng-repeat="item in vm.media track by $index"
+	ng-style="$index % 4 == 0 ? {clear: 'both'} : {}" update-on-active active="item.selected">
         <a class="light-border" ng-click="vm.searchFolder(item)">{{::item.name}}</a>
     </li>
 </ul>

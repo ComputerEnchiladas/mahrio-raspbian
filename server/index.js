@@ -14,6 +14,7 @@ const CONFIG = require('./config/env')( process.env )
 var remote = new events.EventEmitter();
 
 //require('./config/onoff/motion_in_21');
+require('./config/onoff/button_in_19');
 
 var dirAPI = require('./config/media/directories')
   , omx = require('./config/omxdirector/index');

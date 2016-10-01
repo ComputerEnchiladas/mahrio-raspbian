@@ -59,7 +59,7 @@ function main( server, hardware, remote ) {
         });
     });
     socket.on( 'play:one:file', function( file ){
-      file = process.env.MEDIA_DIRECTORY + escapeSpaces( file );
+      file = process.env.MEDIA_DIRECTORY + file;
       if( hardware.omx.isLoaded() ) {
         hardware.omx.stop();
       }

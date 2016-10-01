@@ -24,16 +24,16 @@ module.exports = function( omx, socket ){
     socket.emit('remote:input:playpause');
   }, 400);
   lirc_node.addListener('KEY_UP', REMOTE, function(){
-    socket.emit('remote:input:up');
+    if( !omx.isLoaded() ) { socket.emit('remote:input:up'); }
   }, 400);
   lirc_node.addListener('KEY_DOWN', REMOTE, function(){
-    socket.emit('remote:input:down');
+    if( !omx.isLoaded() ) { socket.emit('remote:input:down'); }
   }, 400);
   lirc_node.addListener('KEY_LEFT', REMOTE, function(){
-    socket.emit('remote:input:left');
+    if( !omx.isLoaded() ) { socket.emit('remote:input:left'); }
   }, 400);
   lirc_node.addListener('KEY_RIGHT', REMOTE, function(){
-    socket.emit('remote:input:right');
+    if( !omx.isLoaded() ) { socket.emit('remote:input:right'); }
   }, 400);
   lirc_node.addListener('KEY_ENTER', REMOTE, function(){
     if( !omx.isLoaded() ) {
