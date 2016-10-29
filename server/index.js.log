@@ -3,3 +3,521 @@ Running Development!
 Server running at: http://192.168.0.6:8080
 1471332604077 Connected RaspberryPi-IO  
 board ready
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+fs.js:640
+  return binding.open(pathModule._makeLong(path), stringToFlags(flags), mode);
+                 ^
+
+Error: EACCES: permission denied, open '/var/run/forever.pid'
+    at Error (native)
+    at Object.fs.openSync (fs.js:640:18)
+    at Object.fs.writeFileSync (fs.js:1333:33)
+    at writePid (/usr/lib/node_modules/forever/bin/monitor:13:6)
+    at .<anonymous> (/usr/lib/node_modules/forever/bin/monitor:46:5)
+    at EventEmitter.emit (/usr/lib/node_modules/forever/node_modules/eventemitter2/lib/eventemitter2.js:339:22)
+    at /usr/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:175:10
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
