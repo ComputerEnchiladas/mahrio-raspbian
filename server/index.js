@@ -19,7 +19,7 @@ require('./config/onoff/button_in_19');
 var dirAPI = require('./config/media/directories')
   , omx = require('./config/omxdirector/index');
 
-var io = require('./config/sockets')( SERVER, {dir: dirAPI, omx: omx});
+var io = require('./config/sockets')( SERVER, {dir: dirAPI, omx: omx}, remote);
 
 require('./config/lirc/index')( omx, remote );
 require('./config/lirc/broadcast')( io, remote);
