@@ -40,7 +40,11 @@ angular.module('starter.controllers', [])
     }, 1000);
   };
 })
-
+  .controller('SearchCtrl', function($scope){
+    $scope.command = function( str ){
+      socket.emit( 'remote:input:' + str );
+    };
+  })
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
