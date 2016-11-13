@@ -66,6 +66,31 @@ function main( server, hardware, remote ) {
       console.log('Now Playing: ', file);
       hardware.omx.play( file );
     });
+
+
+
+    socket.on('remote:input:up', function(){
+      remote.emit('remote:input:up');
+    });
+    socket.on('remote:input:left', function(){
+      remote.emit('remote:input:left');
+    });
+    socket.on('remote:input:enter', function(){
+      remote.emit('remote:input:enter');
+    });
+    socket.on('remote:input:right', function(){
+      remote.emit('remote:input:right');
+    });
+    socket.on('remote:input:down', function(){
+      remote.emit('remote:input:down');
+    });
+    socket.on('remote:input:menu', function(){
+      remote.emit('remote:input:menu');
+    });
+    socket.on('remote:input:playpause', function(){
+      remote.emit('remote:input:playpause');
+    });
+
   });
 
   return io;
