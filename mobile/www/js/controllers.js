@@ -42,8 +42,15 @@ angular.module('starter.controllers', [])
 })
   .controller('SearchCtrl', function($scope){
     $scope.command = function( str ){
+      $scope.working = true;
       socket.emit( 'remote:input:' + str );
     };
+    socket.on('event:camera:done', function(){
+      console.log('camera done');
+      $scope.$apply( function(){
+        delete $scope.working;
+      });
+    });
   })
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [
