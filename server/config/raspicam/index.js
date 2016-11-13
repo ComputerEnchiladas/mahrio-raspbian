@@ -2,7 +2,7 @@ var RaspiCam = require('raspicam');
 const exec = require('child_process').exec;
 var Path = require('path');
 
-var camera = null;
+var camera = null, counter = 0;
 
 module.exports = function( name, timeout){
   camera = new RaspiCam({
@@ -20,11 +20,12 @@ module.exports = function( name, timeout){
     //camera.stop();
 
     var videoPath = Path.normalize(__dirname + './../../public/videos/');
-    console.log('MP4Box  -fps 23  -add '+name+' '+videoPath+'video.mp4');
+    console.log('MP4Box  -fps 23  -add '+name+' '+videoPath+'video'+counter+'.mp4');
     //sudo apt-get install gpac
-    // exec('MP4Box  -fps 23  -add '+output+' video.mp4', function(){
-    //   exec('rm '+output);
-    // });
+    exec('MP4Box  -fps 23  -add '+name+' '+videoPath+'video'+counter+'.mp4', function(){
+     	counter = counter + 1; 
+	exec('rm ' + name);
+    });
   });
 
   return {
