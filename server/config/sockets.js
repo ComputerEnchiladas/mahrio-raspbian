@@ -91,6 +91,10 @@ function main( server, hardware, remote ) {
       remote.emit('remote:input:playpause');
     });
 
+    socket.on('remote:input:camera', function(){
+      hardware.camera.start();
+    });
+
   });
 
   return io;
