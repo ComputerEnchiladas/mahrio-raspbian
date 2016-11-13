@@ -97,6 +97,10 @@ function main( server, hardware, remote ) {
 
   });
 
+  hardware.camera.setExitCallback( function(){
+    io.sockets.emit('event:camera:done');
+  });
+
   return io;
 }
 module.exports = main;
