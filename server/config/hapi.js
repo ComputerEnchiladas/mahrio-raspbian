@@ -19,6 +19,10 @@ module.exports = function( config ) {
                 origin: ['*'],
                 matchOrigin: true
             }
+        },
+        cors: {
+            origin: ['*'],
+            matchOrigin: true
         }
 
     };
