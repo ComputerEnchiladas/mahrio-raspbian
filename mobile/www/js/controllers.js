@@ -40,17 +40,44 @@ angular.module('starter.controllers', [])
     }, 1000);
   };
 })
-  .controller('SearchCtrl', function($scope){
+  .controller('SearchCtrl', function($scope, $ionicModal, $http){
+
+    $scope.$on('$ionicView.enter', function(e) {
+      $http.get('http://192.168.0.6:8080/hardware/camera')
+        .then( function(res){
+          console.log( 'in here', res.data.available);
+          if( !res.data.available ) {
+            console.log( 'in here', res.data.available);
+            $scope.working = true;
+          }
+          $scope.mode = res.data.mode;
+        });
+    });
     $scope.command = function( str ){
       $scope.working = true;
       socket.emit( 'remote:input:' + str );
     };
     socket.on('event:camera:done', function(){
-      console.log('camera done');
       $scope.$apply( function(){
-        delete $scope.working;
+        $scope.working = false;
       });
     });
+    $scope.openCameraSettings = function(){
+      $scope.modal.show();
+    };
+    $scope.closeCameraSettings = function( mode ) {
+      $scope.modal.hide();
+    };
+    $ionicModal.fromTemplateUrl('templates/modal/cameraSettings.html', function(modal){
+        $scope.modal = modal;
+      },
+      {
+        scope: $scope
+      });
+    $scope.setMode = function( mode ){
+      $scope.mode = mode;
+      socket.emit('remote:camera:mode', mode);
+    }
   })
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [

@@ -61,15 +61,22 @@
     <hr/>
 
     <div class="row">
-      <div class="col"></div>
       <div class="col col-50">
         <button class="button button-royal button-block" ng-click="command('camera')" ng-disabled="working">
-          <i class="ion ion-videocamera" ng-show="!working"></i>
-          <i class="ion ion-load-a" ng-show="working"></i>
-          RECORD
+          <i class="fa fa-refresh fa-spin" ng-show="working"></i>
+          <ng-switch on="mode">
+            <span ng-switch-when="photo" ng-show="!working"><i  class="fa fa-photo"></i> PHOTO</span>
+            <span ng-switch-when="timelapse" ng-show="!working"><i  class="fa fa-film" ></i> TIMELAPSE</span>
+            <span ng-switch-when="video" ng-show="!working"><i  class="fa fa-video-camera" ></i> VIDEO</span>
+          </ng-switch>
         </button>
       </div>
-      <div class="col"></div>
+      <div class="col col-50">
+        <button class="button button-stable button-block" ng-click="openCameraSettings()">
+          <i class="fa fa-cogs"></i>
+          SETTINGS
+        </button>
+      </div>
     </div>
 
 
