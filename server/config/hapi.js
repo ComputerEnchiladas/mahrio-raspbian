@@ -15,6 +15,10 @@ module.exports = function( config ) {
             files: {
                 relativeTo: Path.join(config.rootPath, 'public')
             }
+        },
+        cors: {
+            origin: ['*'],
+            matchOrigin: true
         }
     };
 
