@@ -1,0 +1,27 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Camera Settings</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeCameraSettings( this );"
+        style="color:#878787;">Done</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+
+    <ion-list>
+      <ion-radio ng-click="setMode('photo')" ng-model="mode" ng-value="'photo'">
+        <i class="fa fa-photo"></i>
+        Photo
+      </ion-radio>
+      <ion-radio ng-click="setMode('timelapse')" ng-model="mode" ng-value="'timelapse'">
+        <i class="fa fa-film"></i>
+        Timelapse
+      </ion-radio>
+      <ion-radio ng-click="setMode('video')" ng-model="mode" ng-value="'video'">
+        <i class="fa fa-video-camera"></i>
+        Video
+      </ion-radio>
+
+    </ion-list>
+  </ion-content>
+</ion-modal-view>

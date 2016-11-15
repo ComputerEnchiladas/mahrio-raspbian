@@ -5,7 +5,7 @@ var Path = require('path'),
 const EXEC = Promise.denodeify( require('child_process').exec );
 
 var camera = null,
-  callback = null, 
+  sockets = null,
   currentName = null,
   type = 'video',
   isAvailable = true,
@@ -68,8 +68,8 @@ var onExit = function(){
 
   isAvailable = true;
 
-  if( callback && typeof callback === 'function' ) {
-    callback();
+  if( sockets ) {
+    sockets.emit('event:camera:done', currentTime);
   }
   
   if( type === 'video' ) {  
@@ -122,8 +122,8 @@ module.exports = function( server ){
   return {
     start: startFunction,
     stop: stopFunction,
-    setExitCallback: function( socket ) {
-      callback = socket;
+    setIOSocket: function( io ) {
+      sockets = io.sockets;
     },
     setMode: setModeFunction
   };

@@ -96,9 +96,7 @@ function main( server, hardware, remote ) {
     
   });
 
-  hardware.camera.setExitCallback( function(){
-    io.sockets.emit('event:camera:done');
-  });
+  hardware.camera.setIOSockets( io );
 
   return io;
 }
