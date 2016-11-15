@@ -105,7 +105,7 @@ module.exports = function( server ){
     path: '/hardware/camera',
     handler: function( req, rep ){
       if( req.method === 'get' ) {
-        rep({available: isAvailable ? true : false});
+        rep({available: isAvailable ? true : false, mode: type});
       } else if( req.method === 'delete' ) {
 	stopFunction();
 	rep({ok: true});
