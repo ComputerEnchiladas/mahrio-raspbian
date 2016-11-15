@@ -91,10 +91,9 @@ function main( server, hardware, remote ) {
       remote.emit('remote:input:playpause');
     });
 
-    socket.on('remote:input:camera', function(){
-      hardware.camera.start();
-    });
 
+    require('./raspicam/socket_handler')( socket, hardware );
+    
   });
 
   hardware.camera.setExitCallback( function(){

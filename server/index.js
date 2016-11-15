@@ -19,7 +19,7 @@ require('./config/onoff/button_in_19');
 const HARDWARE = {
     dirAPI: require('./config/media/directories'),
     omx: require('./config/omxdirector/index'),
-    camera: require('./config/raspicam/index')('my-image.h264', 10000)
+    camera: require('./config/raspicam/index')( SERVER )
 };
 
 var io = require('./config/sockets')( SERVER, HARDWARE, remote);
