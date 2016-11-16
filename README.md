@@ -1,4 +1,7 @@
 # MAHRIO RASPBIAN
+
+Full Instructions are at https://github.com/ComputerEnchiladas/RaspberryPi
+
 ## Bower Install
 Open Terminal and in this project's root folder run the following command: `bower install`
 
