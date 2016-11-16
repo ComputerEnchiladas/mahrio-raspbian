@@ -7,6 +7,7 @@ const EXEC = Promise.denodeify( require('child_process').exec );
 var camera = null,
   sockets = null,
   currentName = null,
+  currentTime = null,
   type = 'video',
   isAvailable = true,
   videoPath = Path.normalize(__dirname + './../../public/videos/'),
@@ -19,7 +20,8 @@ var startFunction = function(){
   isAvailable = false;
 
   if( type === 'photo' ) {
-    camera.set('output', imagePath + 'myImg_' + new Date().toISOString() + '.jpg');
+    currentTime = new Date().toISOString();
+    camera.set('output', imagePath + 'myImg_' + currentTime + '.jpg');
   } else if( type === 'video'){
     camera.set('output', videoPath + 'video.h264');
   }
@@ -63,25 +65,31 @@ var setModeFunction = function( mode ){
   camera.on('read', onRead);
   camera.on('stop', onStop); 
 };
-var onExit = function(){
-  var currentTime = new Date().toISOString();
-
-  isAvailable = true;
-
+var notifyClients = function(){
   if( sockets ) {
     sockets.emit('event:camera:done', currentTime);
+    currentTime = null;
   }
+};
+var onExit = function(){
+  currentTime = currentTime || new Date().toISOString();
+
+  isAvailable = true;
   
   if( type === 'video' ) {  
     EXEC(MP4box + videoPath + 'video' + currentTime + '.mp4')
       .then( function(){
-	EXEC('rm ' + videoPath + 'video.h264');
+	EXEC('rm ' + videoPath + 'video.h264')
+	  .then( function(){ notifyClients(); });
       });
   } else if (type === 'timelapse') {
     EXEC(avconv + videoPath + 'timelapse' + currentTime + '.mp4')
       .then( function(){
-        EXEC('rm ' + imagePath + 'myImg*');
+        EXEC('rm ' + imagePath + 'myImg*')
+	  .then( function(){ notifyClients(); });
       });
+  } else {
+    notifyClients();
   }
 };
 var onRead = function(){};
@@ -94,7 +102,7 @@ module.exports = function( server ){
     width: 1280,
     height: 720,
     bitrate: 3000000,
-    timeout: 60000,
+    timeout: 10000,
     framerate: 23
   });
 
@@ -122,7 +130,7 @@ module.exports = function( server ){
   return {
     start: startFunction,
     stop: stopFunction,
-    setIOSocket: function( io ) {
+    setIOSockets: function( io ) {
       sockets = io.sockets;
     },
     setMode: setModeFunction
