@@ -1,0 +1,25 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Camera Playback</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeCameraPlayback( );"
+              style="color:#878787;">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <ng-switch on="mode" ng-if="path">
+      <img ng-src="{{path}}" ng-switch-when="photo" style="width: 100%;"/>
+      <video controls ng-switch-when="timelapse" style="width: 100%;">
+        <source ng-src="{{path}}" type="video/mp4"/>
+        <!-- fallback -->
+        Your browser does not support the <code>video</code> element.
+      </video>
+      <video controls ng-switch-when="video" style="width: 100%;">
+        <source ng-src="{{path}}" type="video/mp4"/>
+        <!-- fallback -->
+        Your browser does not support the <code>video</code> element.
+      </video>
+    </ng-switch>
+
+  </ion-content>
+</ion-modal-view>
