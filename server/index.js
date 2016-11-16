@@ -16,13 +16,18 @@ var remote = new events.EventEmitter();
 //require('./config/onoff/motion_in_21');
 require('./config/onoff/button_in_19');
 
-var dirAPI = require('./config/media/directories')
-  , omx = require('./config/omxdirector/index');
+const HARDWARE = {
+    dirAPI: require('./config/media/directories'),
+    omx: require('./config/omxdirector/index'),
+    camera: require('./config/raspicam/index')( SERVER )
+};
 
-var io = require('./config/sockets')( SERVER, {dir: dirAPI, omx: omx});
+var io = require('./config/sockets')( SERVER, HARDWARE, remote);
 
-require('./config/lirc/index')( omx, remote );
+require('./config/lirc/index')( HARDWARE.omx, remote );
 require('./config/lirc/broadcast')( io, remote);
+
+
 
 require('./routes/index')( SERVER );
 

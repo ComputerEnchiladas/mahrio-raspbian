@@ -1,0 +1,84 @@
+<ion-view view-title="Remote">
+  <ion-content>
+    <div class="row">
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col">
+        <button class="button button-calm button-block" ng-click="command('up')">
+          <i class="ion ion-chevron-up"></i>
+        </button>
+      </div>
+      <div class="col"></div>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col"></div>
+      <div class="col">
+        <button class="button button-calm button-block" ng-click="command('left')">
+          <i class="ion ion-chevron-left"></i>
+        </button>
+      </div>
+      <div class="col">
+        <button class="button button-positive button-block" ng-click="command('enter')">
+          ENTER
+        </button>
+      </div>
+      <div class="col">
+        <button class="button button-calm button-block" ng-click="command('right')">
+          <i class="ion ion-chevron-right"></i>
+        </button>
+      </div>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col">
+        <button class="button button-calm button-block" ng-click="command('down')">
+          <i class="ion ion-chevron-down"></i>
+        </button>
+      </div>
+      <div class="col"></div>
+      <div class="col"></div>
+    </div>
+    <hr/>
+
+    <div class="row">
+      <div class="col"></div>
+      <div class="col">
+        <button class="button button-assertive button-block" ng-click="command('menu')">
+          <i class="ion ion-stop"></i>
+        </button>
+      </div>
+      <div class="col"></div>
+      <div class="col">
+        <button class="button button-balanced button-block" ng-click="command('playpause')">
+          <i class="ion ion-play"></i>
+        </button>
+      </div>
+      <div class="col"></div>
+    </div>
+    <hr/>
+
+    <div class="row">
+      <div class="col col-50">
+        <button class="button button-royal button-block" ng-click="command('camera')" ng-disabled="working">
+          <i class="fa fa-refresh fa-spin" ng-show="working"></i>
+          <ng-switch on="mode">
+            <span ng-switch-when="photo" ng-show="!working"><i  class="fa fa-photo"></i> PHOTO</span>
+            <span ng-switch-when="timelapse" ng-show="!working"><i  class="fa fa-film" ></i> TIMELAPSE</span>
+            <span ng-switch-when="video" ng-show="!working"><i  class="fa fa-video-camera" ></i> VIDEO</span>
+          </ng-switch>
+        </button>
+      </div>
+      <div class="col col-50">
+        <button class="button button-stable button-block" ng-click="openCameraSettings()">
+          <i class="fa fa-cogs"></i>
+          SETTINGS
+        </button>
+      </div>
+    </div>
+
+
+  </ion-content>
+</ion-view>

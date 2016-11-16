@@ -14,8 +14,17 @@ module.exports = function( config ) {
         routes: {
             files: {
                 relativeTo: Path.join(config.rootPath, 'public')
+            },
+            cors: {
+                origin: ['*'],
+                matchOrigin: true
             }
+        },
+        cors: {
+            origin: ['*'],
+            matchOrigin: true
         }
+
     };
 
     if( config.url ) {
