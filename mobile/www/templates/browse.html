@@ -1,5 +1,27 @@
-<ion-view view-title="Browse">
+<style>
+  .led {
+    border: none;
+    text-shadow: 2px 2px 3px #c0c0c0;
+    color: #252525;
+    font-size: 36px;
+    font-weight: bold;
+    min-height: 300px;
+  }
+</style>
+
+<ion-view view-title="NeoPixel Remote">
   <ion-content>
-    <h1>Browse</h1>
+    <br/>
+    <br/>
+    <button class="button button-block led" color-picker ng-model="color" modal-title="Choose a color" color-box="{{color}}">
+      LED Light Color
+      <br/>
+      {{ color || 'Choose a color' }}
+    </button>
+
+    <button class="button button-block button-inverted" ng-click="broadcastResetColor()"
+            style="background: #272727;color: #e3e3e3;font-size: 30px;padding: 20px 0;">
+      OFF
+    </button>
   </ion-content>
 </ion-view>

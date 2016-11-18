@@ -102,6 +102,20 @@ angular.module('starter.controllers', [])
       socket.emit('remote:camera:mode', mode);
     }
   })
+  .controller('BrowseCtrl', function($scope){
+    $scope.color = '#000000';
+    $scope.$on('event:color:change', function(e, hex){
+      socket.emit('led:set:color', hex );
+    });
+
+    $scope.broadcastResetColor = function(){
+      socket.emit('led:set:color', '#000000' );
+      $scope.$broadcast('event:color:reset');
+    };
+    socket.on('event:arduino:data', function( data ) {
+      console.log( 'Data: ' + data );
+    });
+  })
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
