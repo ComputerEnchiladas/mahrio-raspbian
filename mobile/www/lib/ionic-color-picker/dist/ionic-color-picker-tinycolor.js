@@ -378,7 +378,12 @@ angular.module('ionic-color-picker', [])
 
             var setColorTo = function(col, fun){
                 ngModelController.$setViewValue(col[fun]());
+                scope.$emit('event:color:change', col[fun]() );
             };
+
+            scope.$on('event:color:reset', function(){
+                ngModelController.$setViewValue('#000000');
+            });
 
             //we expect a color here
             var setColorToName = function(col){
