@@ -28,7 +28,7 @@ function main( server, hardware, remote ) {
     });
     socket.on( 'get:media:files', function( path ){
       path = process.env.MEDIA_DIRECTORY + escapeSpaces( path );
-
+console.log( path, hardware );
       hardware.dir.getFiles( path )
         .then( function(files){
           socket.emit( 'media:files:list', files);
@@ -93,10 +93,12 @@ function main( server, hardware, remote ) {
 
 
     require('./raspicam/socket_handler')( socket, hardware );
+    require('./serial/arduino_socket')( socket, hardware );	
     
   });
 
   hardware.camera.setIOSockets( io );
+  hardware.arduino.setIOSockets( io );
 
   return io;
 }

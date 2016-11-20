@@ -1,4 +1,5 @@
 server/public/bower_components/
 server/public/videos/
+server/public/img/
 node_modules/
 .idea/

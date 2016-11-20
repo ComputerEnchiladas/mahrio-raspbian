@@ -19,7 +19,8 @@ require('./config/onoff/button_in_19');
 const HARDWARE = {
     dirAPI: require('./config/media/directories'),
     omx: require('./config/omxdirector/index'),
-    camera: require('./config/raspicam/index')( SERVER )
+    camera: require('./config/raspicam/index')( SERVER ),
+    arduino: require('./config/serial/arduino')()
 };
 
 var io = require('./config/sockets')( SERVER, HARDWARE, remote);
