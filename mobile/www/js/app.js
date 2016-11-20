@@ -22,7 +22,11 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $sceDelegateProvider, $animateProvider) {
+
+  $animateProvider.classNameFilter(/^((?!(fa-refresh)).)*$/);
+  $sceDelegateProvider.resourceUrlWhitelist(['self', new RegExp('^(http):\/\/192\.168\.0\.6:8080/.+$')]);
+
   $stateProvider
 
     .state('app', {

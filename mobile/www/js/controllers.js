@@ -40,12 +40,11 @@ angular.module('starter.controllers', [])
     }, 1000);
   };
 })
-  .controller('SearchCtrl', function($scope, $ionicModal, $http){
-
+  .controller('SearchCtrl', function($scope, $ionicModal, $http, $timeout){
+    $scope.working = false;
     $scope.$on('$ionicView.enter', function(e) {
       $http.get('http://192.168.0.6:8080/hardware/camera')
         .then( function(res){
-          console.log( 'in here', res.data.available);
           if( !res.data.available ) {
             console.log( 'in here', res.data.available);
             $scope.working = true;
@@ -57,16 +56,37 @@ angular.module('starter.controllers', [])
       $scope.working = true;
       socket.emit( 'remote:input:' + str );
     };
-    socket.on('event:camera:done', function(){
+    socket.on('event:camera:done', function( currentTime ){
+      var url = 'http://192.168.0.6:8080/assets/videos/';
       $scope.$apply( function(){
+        if( $scope.mode === 'photo') {
+          url = 'http://192.168.0.6:8080/assets/img/';
+          $scope.path = url + 'myImg_'+currentTime+'.jpg';
+        } else if( $scope.mode === 'timelapse'){
+          $scope.path = url + 'timelapse'+currentTime+'.mp4';
+        } else {
+          $scope.path = url + 'video'+currentTime+'.mp4';
+        }
         $scope.working = false;
       });
     });
     $scope.openCameraSettings = function(){
       $scope.modal.show();
     };
+    $scope.openCameraPlayback = function(){
+      $ionicModal.fromTemplateUrl('templates/modal/cameraPlayback.html', function(modal){
+          $scope.modalPlayback = modal;
+          $scope.modalPlayback.show();
+        },
+        {
+          scope: $scope
+        });
+    };
     $scope.closeCameraSettings = function( mode ) {
       $scope.modal.hide();
+    };
+    $scope.closeCameraPlayback = function( mode ) {
+      $scope.modalPlayback.remove();
     };
     $ionicModal.fromTemplateUrl('templates/modal/cameraSettings.html', function(modal){
         $scope.modal = modal;
@@ -74,6 +94,9 @@ angular.module('starter.controllers', [])
       {
         scope: $scope
       });
+    $scope.$on('$destroy', function() {
+      $scope.modal.remove();
+    });
     $scope.setMode = function( mode ){
       $scope.mode = mode;
       socket.emit('remote:camera:mode', mode);
