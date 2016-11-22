@@ -28,7 +28,7 @@ function main( server, hardware, remote ) {
     });
     socket.on( 'get:media:files', function( path ){
       path = process.env.MEDIA_DIRECTORY + escapeSpaces( path );
-console.log( path, hardware );
+
       hardware.dir.getFiles( path )
         .then( function(files){
           socket.emit( 'media:files:list', files);
@@ -85,10 +85,18 @@ console.log( path, hardware );
       remote.emit('remote:input:down');
     });
     socket.on('remote:input:menu', function(){
-      remote.emit('remote:input:menu');
+      if( hardware.omx.isLoaded() ) {
+        hardware.omx.stop();
+      }
     });
     socket.on('remote:input:playpause', function(){
-      remote.emit('remote:input:playpause');
+      if( hardware.omx.isLoaded() ) {
+        if( hardware.omx.isPlaying() ) {
+          hardware.omx.pause();
+        } else {
+          hardware.omx.play();
+        }
+      }
     });
 
 
