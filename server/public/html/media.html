@@ -9,6 +9,6 @@
 <ul class="text-center nav nav-pills">
     <li class="col-xs-3 no-margin" ng-class="{true: 'active'}[item.selected]" ng-repeat="item in vm.media track by $index"
 	ng-style="$index % 4 == 0 ? {clear: 'both'} : {}" update-on-active active="item.selected">
-        <a class="light-border" ng-click="vm.searchFolder(item)">{{::item.name}}</a>
+        <a class="light-border" ng-click="vm.searchFolder(item, $index)">{{::item.name}}</a>
     </li>
 </ul>

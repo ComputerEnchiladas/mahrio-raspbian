@@ -23,7 +23,7 @@
     "johnny-five": "^0.10.0",
     "lirc_node": "0.0.4",
     "node-env-file": "0.1.8",
-    "omxdirector": "^0.1.2",
+    "omxdirector": "git+ssh://git@github.com/ComputerEnchiladas/omxdirector.git",
     "onoff": "^1.1.1",
     "promise": "^7.1.1",
     "promise-settle": "^0.3.0",
