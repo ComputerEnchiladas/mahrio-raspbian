@@ -1,6 +1,8 @@
 'use strict';
 
 var io = null
+  , multipleFiles = false
+  , savedFiles = []
   , PromiseSettle = require('promise-settle');
 
 function escapeSpaces( path ) {
@@ -46,6 +48,7 @@ function main( server, hardware, remote ) {
         })
     });
     socket.on( 'play:all:dir', function( path ){
+      multipleFiles = true;
       path = process.env.MEDIA_DIRECTORY + escapeSpaces( path );
 
       if( path[path.length-1] === '/' ) {
@@ -55,16 +58,20 @@ function main( server, hardware, remote ) {
       hardware.dir.getAllFiles( path )
         .then( function(files){
           files = files.split('\n').filter( function(item){ return item !== ""; });
-          hardware.omx.play( files );
+	  savedFiles = files;
+          hardware.omx.play( savedFiles );
         });
     });
     socket.on( 'play:one:file', function( file ){
+      multipleFiles = false;
       file = process.env.MEDIA_DIRECTORY + file;
       if( hardware.omx.isLoaded() ) {
         hardware.omx.stop();
+	setTimeout( function(){ hardware.omx.play( file ); }, 400 );
+      } else {
+	console.log('Now Playing: ', file);
+        hardware.omx.play( file );
       }
-      console.log('Now Playing: ', file);
-      hardware.omx.play( file );
     });
 
 
@@ -73,12 +80,29 @@ function main( server, hardware, remote ) {
       remote.emit('remote:input:up');
     });
     socket.on('remote:input:left', function(){
+      if( multipleFiles && savedFiles.length && hardware.omx.isLoaded() ) {
+        hardware.omx.stop();
+	setTimeout( function(){
+	  var last = savedFiles.pop();
+	  savedFiles.unshift( last );
+	  hardware.omx.play( savedFiles, {audioOutput: 'both', loop: true});
+	}, 400); 
+      }
       remote.emit('remote:input:left');
     });
     socket.on('remote:input:enter', function(){
       remote.emit('remote:input:enter');
     });
     socket.on('remote:input:right', function(){
+      if( multipleFiles && savedFiles.length && hardware.omx.isLoaded() ) {
+        hardware.omx.stop();
+	setTimeout( function(){
+	  var first = savedFiles.shift();
+	  savedFiles.push( first );
+	  hardware.omx.play( savedFiles, {audioOutput: 'both', loop: true});
+	}, 400); 
+      }
+
       remote.emit('remote:input:right');
     });
     socket.on('remote:input:down', function(){
@@ -87,6 +111,7 @@ function main( server, hardware, remote ) {
     socket.on('remote:input:menu', function(){
       if( hardware.omx.isLoaded() ) {
         hardware.omx.stop();
+	multipleFiles = false;
       }
     });
     socket.on('remote:input:playpause', function(){
@@ -107,6 +132,9 @@ function main( server, hardware, remote ) {
 
   hardware.camera.setIOSockets( io );
   hardware.arduino.setIOSockets( io );
+  hardware.omx.on('next', function(file){
+    if( file ) { var first = savedFiles.shift(); savedFiles.push( first ); }
+  });
 
   return io;
 }

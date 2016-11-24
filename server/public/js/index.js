@@ -21,6 +21,12 @@
 
       return {
         socketUpdate: false,
+	setCurrentSelection: function( i ){
+	  allMedia[ ((selected[0] - 1) * 4) + (selected[1] - 1) ].selected = false;
+          selected[0] = ~~(i / 4) + 1;
+          selected[1] = (i % 4) + 1;
+	  allMedia[ i ].selected = true;
+	},
         remoteInput: function( direction ) {
 	  if( selected[0] > 0 ) {
             allMedia[ ((selected[0] - 1) * 4) + (selected[1] - 1) ].selected = false;
@@ -93,22 +99,18 @@
       this.provisionRemote = function(  media ) {
         _socket.on('remote:input:up', function () {
           media.remoteInput( 'up' );
-          console.log('UP');
           $rootScope.$digest();
         });
         _socket.on('remote:input:down', function () {
           media.remoteInput( 'down' );
-          console.log('DOWN');
           $rootScope.$digest();
         });
         _socket.on('remote:input:left', function () {
           media.remoteInput( 'left' );
-          console.log('LEFT');
           $rootScope.$digest();
         });
         _socket.on('remote:input:right', function () {
           media.remoteInput( 'right' );
-          console.log('RIGHT');
           $rootScope.$digest();
         });
         _socket.on('remote:input:enter', function () {
@@ -117,7 +119,6 @@
 	  } catch(e) {
 	    document.querySelector('button.btn-primary').click();
 	  }
-          console.log('ENTER');
         });
         _socket.on('remote:input:menu', function () {
           //$rootScope.$broadcast('remote:input:menu');
@@ -183,8 +184,11 @@
 	  }
         }
       });
-      that.searchFolder = function( item ) {
-        if( item.type !== 'directory'){
+      that.searchFolder = function( item, index ) {
+        if( !item.selected ) { 
+	  Media.setCurrentSelection( index );
+	}
+	if( item.type !== 'directory'){
           SocketEvents.playOne( path.join('/') + item.name );
           return;
         }
