@@ -1,8 +1,16 @@
 var SerialPort = require('serialport'),
-  arduino = new SerialPort( '/dev/ttyACM0', {
-    baudRate: 115200
-  }),
+  path = require('path'),
+  arduino = {},
+  arduinoDevice = '/dev/ttyACM0',
   sockets = null;
+
+if( path.existsSync( arduinoDevice ) ) {
+  arduino = new SerialPort( arduinoDevice, {
+    baudRate: 115200
+  });
+} else {
+  arduino = { on: function(){}, write: function(){} };
+}
 
 arduino.on('open', function(){
   console.log('arduino port on')
