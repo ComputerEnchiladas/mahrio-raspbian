@@ -102,15 +102,34 @@ angular.module('starter.controllers', [])
       socket.emit('remote:camera:mode', mode);
     }
   })
-  .controller('BrowseCtrl', function($scope){
+  .controller('BrowseCtrl', function($scope, $ionicModal){
+    $scope.mode = 0;
     $scope.color = '#000000';
+    var c = '000000';
     $scope.$on('event:color:change', function(e, hex){
-      socket.emit('led:set:color', hex );
+      c = hex.slice(1);
+      socket.emit('led:set:color', $scope.mode+ c);
     });
 
     $scope.broadcastResetColor = function(){
-      socket.emit('led:set:color', '#000000' );
+      socket.emit('led:set:color', '0000000' );
       $scope.$broadcast('event:color:reset');
+    };
+    $scope.changeMode = function(){
+      $ionicModal.fromTemplateUrl('templates/modal/ledMode.html', function(modal){
+          $scope.ledModal = modal;
+          $scope.ledModal.show();
+        },
+        {
+          scope: $scope
+        });
+    };
+    $scope.closeModeSettings = function( ) {
+      $scope.ledModal.hide();
+    };
+    $scope.setMode = function( mode ){
+      $scope.mode = mode;
+      socket.emit('led:set:color', mode + c);
     };
     socket.on('event:arduino:data', function( data ) {
       console.log( 'Data: ' + data );

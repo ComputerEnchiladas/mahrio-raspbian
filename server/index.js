@@ -14,19 +14,20 @@ const CONFIG = require('./config/env')( process.env )
 var remote = new events.EventEmitter();
 
 //require('./config/onoff/motion_in_21');
-require('./config/onoff/button_in_19');
+//require('./config/onoff/button_in_19');
 
 const HARDWARE = {
     dirAPI: require('./config/media/directories'),
     omx: require('./config/omxdirector/index'),
-    camera: require('./config/raspicam/index')( SERVER ),
-    arduino: require('./config/serial/arduino')()
+    dir: require('./config/media/directories')
+    //camera: require('./config/raspicam/index')( SERVER ),
+    //arduino: require('./config/serial/arduino')()
 };
 
 var io = require('./config/sockets')( SERVER, HARDWARE, remote);
 
-require('./config/lirc/index')( HARDWARE.omx, remote );
-require('./config/lirc/broadcast')( io, remote);
+//require('./config/lirc/index')( HARDWARE.omx, remote );
+//require('./config/lirc/broadcast')( io, remote);
 
 
 

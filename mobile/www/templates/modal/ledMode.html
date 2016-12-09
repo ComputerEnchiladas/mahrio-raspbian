@@ -1,0 +1,21 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">LED Mode</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeModeSettings( this );"
+              style="color:#878787;">Done</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+
+    <ion-list>
+      <ion-radio ng-click="setMode(0)" ng-model="mode" ng-value="'0'">
+        Solid
+      </ion-radio>
+      <ion-radio ng-click="setMode(1)" ng-model="mode" ng-value="'1'">
+        Sparkle
+      </ion-radio>
+
+    </ion-list>
+  </ion-content>
+</ion-modal-view>

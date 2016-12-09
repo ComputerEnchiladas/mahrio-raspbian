@@ -97,8 +97,8 @@ console.log( path, hardware );
     
   });
 
-  hardware.camera.setIOSockets( io );
-  hardware.arduino.setIOSockets( io );
+  //hardware.camera.setIOSockets( io );
+  //hardware.arduino.setIOSockets( io );
 
   return io;
 }

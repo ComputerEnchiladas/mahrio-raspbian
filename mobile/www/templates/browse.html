@@ -5,22 +5,26 @@
     color: #252525;
     font-size: 36px;
     font-weight: bold;
-    min-height: 300px;
   }
 </style>
 
 <ion-view view-title="NeoPixel Remote">
   <ion-content>
-    <br/>
-    <br/>
+    <button class="button button-block led" ng-model="mode"
+      ng-click="changeMode()">
+      Mode:
+      <ng-switch on="mode">
+        <span ng-switch-when="0">Solid</span>
+        <span ng-switch-when="1">Sparkle</span>
+      </ng-switch>
+    </button>
+
     <button class="button button-block led" color-picker ng-model="color" modal-title="Choose a color" color-box="{{color}}">
-      LED Light Color
-      <br/>
-      {{ color || 'Choose a color' }}
+      Color {{ color || 'Choose a color' }}
     </button>
 
     <button class="button button-block button-inverted" ng-click="broadcastResetColor()"
-            style="background: #272727;color: #e3e3e3;font-size: 30px;padding: 20px 0;">
+            style="background: #000000;color: #e3e3e3;font-size: 30px;padding: 20px 0;">
       OFF
     </button>
   </ion-content>
